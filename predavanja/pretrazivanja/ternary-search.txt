@@ -1,0 +1,16 @@
+Za danu parabolu y=f(x), nadi njeno tjeme u intervalu od [0, 100]
+
+double lo = 0, hi = 100, mid;
+while(hi - lo > 1e-3)
+{
+    double t1 = lo + (hi - lo) / 3
+    double t2 = lo + 2*(hi - li) / 3
+    if(f(t1) < f(t2)) {
+        hi = t2;
+    }
+    else {
+        lo = t1;
+    }
+}
+
+slozenost: O(log2/3 n)

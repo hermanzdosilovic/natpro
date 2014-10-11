@@ -1,0 +1,26 @@
+A - polje (dim N)
+Lo - donja granica
+Hi - gornja granica
+Mid - sredina
+x = ?
+
+Lo = 0
+Hi = N - 1
+Mid = Lo + (Hi - Lo) / 2
+
+while Lo <= Hi
+    A[Mid] == x ?
+        vrati Mid
+    A[Mid] > x ?
+        Hi = Mid - 1
+        Mid = Lo + (Hi - Lo) / 2
+    else
+        Lo = Mid + 1
+        Mid = Lo + (Hi - Lo) / 2
+
+vrati - 1
+
+(lo + hi) / 2 daje isto kao i lo + (hi - lo)/2
+(lo + hi) / 2 opasan jer moze doci do overflowa
+
+slozenost: O(log2 n)
