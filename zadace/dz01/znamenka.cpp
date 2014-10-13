@@ -4,7 +4,7 @@ typedef long long lld;
 
 lld z(lld x)
 {
-    int n = 0, y = x, a = 1;
+    lld n = 0, y = x, a = 1;
     while(y)
     {
         n++;
@@ -15,7 +15,7 @@ lld z(lld x)
 
     lld sol = (x - a + 1)*n;
     a = 1;
-    for(int i = 1; i < n; i++)
+    for(lld i = 1; i < n; i++)
     {
         sol += (a*10 - a)*i;
         a *= 10;
@@ -39,14 +39,14 @@ int main()
             hi = mid;
     }
 
-    int k = z(lo) - N + 1;
-    int sol;
+    lld k = z(lo) - N + 1;
+    lld sol;
     while(k--)
     {
         sol = lo%10;
         lo /= 10;
     }
 
-    printf("%d\n", sol);
+    printf("%lld\n", sol);
     return 0;
 }
