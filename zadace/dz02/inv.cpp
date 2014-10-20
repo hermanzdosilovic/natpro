@@ -1,38 +1,45 @@
 #include <cstdio>
 #include <algorithm>
 
+#define x first
+#define y second
+
 using namespace std;
 
+typedef long long lld;
+
 const int MAX_N = 1000000;
-const int MAX_A = 10000000;
 
-int lg[MAX_A + 3], a[MAX_N + 3], n, N;
+lld lg[MAX_N + 3];
+int N;
+pair<int, int> a[MAX_N + 3];
 
-int sum(int x) {
-    int sol = 0;
+lld sum(int x) {
+    lld sol = 0;
     for(; x > 0; x -= x & -x) {
         sol += lg[x];
     }
     return sol;
 }
 
-void update(int x, int y) {
+void update(int x) {
     for(; x <= N; x += x & -x) {
-        lg[x] += y;
+        lg[x] += 1;
     }
 }
 
 int main() {
-    int sol = 0;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
-        N = max(a[i], N);
+    lld sol = 0;
+    scanf("%d", &N);
+    for(int i = 0; i < N; i++) {
+        scanf("%d", &a[i].x);
+        a[i].y = N - i;
     }
-    for(int i = n - 1; i >= 0; i--) {
-        sol += sum(a[i]);
-        update(a[i], 1);
+    sort(a, a + N);
+    for(int i = 0; i < N; i++) {
+        sol += sum(a[i].y);
+        update(a[i].y);
     }
-    printf("%d\n", sol);
+    printf("%lld\n", sol);
     return 0;
 }
