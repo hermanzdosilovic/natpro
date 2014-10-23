@@ -9,11 +9,11 @@ using namespace std;
 typedef long long lld;
 typedef pair<lld, lld> llp;
 
-const lld INF = 0x7fffffffffffffffL;
+const lld INF = 0x7fffffffffffffff;
 const int MAXL = 100000;
 
 llp tree[1 << 18];
-bool sensor[MAXL + 3];
+bool enable[MAXL + 3];
 int I, L;
 lld R, K;
 char c[6];
@@ -23,11 +23,11 @@ void update(int n, int l, int r) {
     return;
   } else if (l == r && r == I) {
     tree[n] = mp(K, K);
-    if(!sensor[I]) {
+    if(!enable[I]) {
       tree[n] = mp(0, INF);
     }
     return;
-  } else if (l == r && r != I) {
+  } else if (l == r) {
     return;
   }
   update(2*n, l, (l+r)/2);
@@ -65,12 +65,12 @@ int main() {
     if (c[0] == 'A') {
       scanf("%d%lld", &I, &K);
       I++;
-      sensor[I] = true;
+      enable[I] = true;
       update(1, 1, L - 1);
     } else if (c[0] == 'D') {
       scanf("%d", &I);
       I++;
-      sensor[I] = false;
+      enable[I] = false;
       K = 0;
       update(1, 1, L - 1);
     } else if (c[0] == 'Q') {
@@ -78,9 +78,9 @@ int main() {
       int sol = 0;
       lld najveca = 0;
       for (int i = 0; i < L; i++) {
-        if (!sensor[i + 1])
-          continue;
         I = i + 1;
+        if (!enable[I])
+          continue;
         llp n = query(1, 1, L - 1);
         lld trenutna = (n.x - n.y)*i;
         if(trenutna <= R && trenutna >= najveca) {
