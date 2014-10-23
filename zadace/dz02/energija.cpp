@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <algorithm>
+#include <set>
 #define x first
 #define y second
 #define mp make_pair
@@ -12,6 +13,7 @@ typedef pair<lld, lld> llp;
 const lld INF = 0x7fffffffffffffff;
 const int MAXL = 100000;
 
+set<lld> s;
 llp tree[1 << 18];
 bool enable[MAXL + 3];
 int I, L;
@@ -59,33 +61,47 @@ void init(int n, int l, int r) {
 
 int main() {
   scanf("%d", &L);
-  init(1, 1, L - 1);
+  init(1, 1, L);
   while (1) {
     scanf("%s", c);
     if (c[0] == 'A') {
       scanf("%d%lld", &I, &K);
       I++;
       enable[I] = true;
-      update(1, 1, L - 1);
+      s.insert(I);
+      update(1, 1, L);
     } else if (c[0] == 'D') {
       scanf("%d", &I);
       I++;
       enable[I] = false;
+      s.erase(I);
       K = 0;
-      update(1, 1, L - 1);
+      update(1, 1, L);
     } else if (c[0] == 'Q') {
       scanf("%lld", &R);
       int sol = 0;
-      lld najveca = 0;
-      for (int i = 0; i < L; i++) {
-        I = i + 1;
-        if (!enable[I])
-          continue;
-        llp n = query(1, 1, L - 1);
-        lld trenutna = (n.x - n.y)*i;
-        if(trenutna <= R && trenutna >= najveca) {
-          najveca = trenutna;
-          sol = i;
+      int lo = 1, mid, hi = L;
+      if(s.empty()) {
+        printf("%d\n", sol);
+        continue;
+      }
+      while (lo < hi) {
+        mid = lo + (hi - lo)/2 + 1;
+        I = mid;
+        llp n = query(1, 1, L);
+        lld trenutna = (n.x - n.y)*(mid - 1);
+        if(trenutna > R)
+          hi = mid - 1;
+        else
+          lo = mid;
+      }
+      if(enable[lo]) {
+        sol = lo - 1;
+      } else {
+        set<lld>::iterator i = s.lower_bound(lo);
+        sol = *i - 1;
+        if(*i != lo) {
+          sol = *--i - 1;
         }
       }
       printf("%d\n", sol);
