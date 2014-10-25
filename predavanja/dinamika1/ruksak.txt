@@ -1,0 +1,44 @@
+X n
+Ti Vi
+
+X kila stane u ruksak
+n - koliko imamo predmeta
+
+x v
+3 4
+5 7
+
+Mirko zeli u svojoj torbi sto vecu sumu vrijednosti predmeta ali tako da oni stanu u ruksak.
+
+znaci za ovaj testni uzeti ce dva puta prvi predmet (3, 4). Tako ce imati tezinu 6, a vrijednost u trobi
+ce mu biti 8.
+
+21 3
+7 10
+8 12
+5 7
+
+2*12 + 7 = 31 to je max koji mozemo uzeti.
+
+Greedy ne prolazi za ovakav zadatak.
+
+Rjesenje:
+Poanta je razmisljati u o ovisnosti o X tj u ovisnosti o maximalnoj tezini koju mozemo strpati u torbu.
+neka je a = x;
+
+1. predmet f(a) = 4 + f(a - 3);
+2. predmet f(a) = 7 + f(a - 5);
+
+argumenti su tezine koje mozemo imati
+f(0) = 0
+f(1) = 0
+f(2) = 0
+f(3) = 4 + f(3 - 3);
+f(4) = 4 + f(4 - 3);
+f(5) = max(4 + f(5 - 3), 7 + f(5 - 5));
+
+
+------------
+Modifikacija zadatka ruksak ako neki element mozemo uzeti samo jednom
+f(x, k) = max(V[k-1] + f(x + T[k - 1], k - 1), f(x, k - 1));
+(a + b)%M = (a%M + b%M)%M
