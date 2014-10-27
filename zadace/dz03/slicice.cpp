@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <algorithm>
 
 using namespace std;
 
@@ -38,10 +39,26 @@ int main() {
   memset(memo, -1, sizeof(memo));
   memo[0][0] = 1;
   memo[0][1] = 0;
+  f(A, 1);
+  f(A, 0);
+  f(B, 1);
+  f(B, 0);
   while (M--) {
     scanf("%d", &N);
-
-    int c = f(N, 1);
+    for (int i = max(A, B); i <= N; i++) {
+      for (int j = 0; j < 2; j++) {
+        int c1 = memo[i - A][!j];
+        int c2 = memo[i - B][!j];
+        int c3 = memo[i - 1][!j];
+        if (c1 == j || c2 == j || c3 == j) {
+          memo[i][j] = j;
+          memo[i][!j] = !j;
+        } else {
+          memo[i][j] = !j;
+          memo[i][!j] = j;
+        }
+      }
+    }
     if (memo[N][1])
       printf("mirko\n");
     else
