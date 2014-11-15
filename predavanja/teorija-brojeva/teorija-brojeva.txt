@@ -1,0 +1,27 @@
+* Djeljivost
+a | b  <=> postoji k iz Z td. b=ak
+a dijeli b
+b je djeljiv sa a
+
+* Prost broj
+p je prost ako i samo ako za svaki k iz N, 1 < k < p, k ne dijeli p
+p != 1
+
+* Rastav na proste faktore
+za svaki n iz N, postoji jedinstven niz (p1, L1, pk, Lk) iz N^2k
+gdje su pi su prosti (pi != pj, i != j) i N=p1^L1*p2^L2*...*pk^Lk
+Zbog jedinstvenosti ovog rastava 1 nije prost broj
+
+Postoji jedinstveni niz (L1, L2, ...) iz N^N
+td. n = p1^L1*p2^L2*p3^L3 gdje su p1, p2, ... prosti brojevi (2, 3, 5, ...)
+npr 45 = 2^0 * 3^2 * 5^1 * 7^0 * 11^0 * ...
+
+* Najveci zajednicki djelitelj (gcd)
+od a, b iz N je g iz N td. g dijeli a, g dijeli b i
+za svaki g' > g, vrijedi da g' ne dijeli a ili g' ne dijeli b
+
+* Dijeljenje s ostatkom
+a, b iz N postoje jedinstveni p i q iz N td.
+a = pb + q i q < b
+a === q (mod b)
+
