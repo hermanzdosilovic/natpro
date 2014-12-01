@@ -2,21 +2,23 @@
 #include <set>
 #include <cmath>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
 const int MAXN = 50;
-const int BIGN = 100000;
+const int BIGN = 1000000000;
 
 int N, M;
-int n[MAXN + 3], z[BIGN + 3];
+int n[MAXN + 3];
 set<int> prosti;
+map<int, int> z;
 
 int main() {
   scanf("%d", &N);
 
   for (int i = 0; i < N; i++) {
-    scanf("%d", n + i);
+    scanf("%d", &n[i]);
   }
 
   scanf("%d", &M);
