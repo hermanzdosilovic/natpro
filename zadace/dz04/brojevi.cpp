@@ -13,6 +13,25 @@ int N, M;
 int n[MAXN + 3];
 set<int> prosti;
 map<int, int> z;
+int prime_br;
+
+bool cmp(int x, int y) {
+  int xcnt = 0;
+  while(x%prime_br == 0) {
+    x /= prime_br;
+    xcnt++;
+  }
+
+  int ycnt = 0;
+  while(y%prime_br == 0) {
+    y /= prime_br;
+    ycnt++;
+  }
+
+  if (xcnt > ycnt)
+    return true;
+  return false;
+}
 
 int main() {
   scanf("%d", &N);
@@ -50,6 +69,8 @@ int main() {
     while (z[br]) {
       sol++;
       int cnt = 0;
+      prime_br = br;
+      sort(n, n + N, cmp);
       for (int i = 0; i < N; i++) {
         if(cnt < M && n[i]%br == 0) {
           cnt++;
@@ -57,8 +78,6 @@ int main() {
           z[br]--;
         }
       }
-      sort(n, n + N);
-      reverse(n, n + N);
     }
   }
 
