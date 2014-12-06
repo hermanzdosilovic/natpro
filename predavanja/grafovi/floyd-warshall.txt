@@ -23,5 +23,5 @@ dp = dp'
 na kraju ne treba ni dp'.
 
 zadaci:
-HIGHWAYS - dijkstra
-NEGCYC - floyd-warshall
+http://www.spoj.com/problems/HIGHWAYS/
+http://www.spoj.com/problems/NEGCYC/
