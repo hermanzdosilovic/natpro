@@ -7,6 +7,7 @@
 using namespace std;
 
 // O((N + M)logN)
+// najmanji element koji je veci ili jednak x - lower-bound
 struct Edge {
   int b, w;
   Edge () {};
