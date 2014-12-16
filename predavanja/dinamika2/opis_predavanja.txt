@@ -1,0 +1,45 @@
+Na drugom dijelu predavanja (Dinamike #2) kroz zadatke smo obradili neke od cestih trikova vezanih uz dp. Preciznije, prosli smo kroz:
+Memorijske optimizacije (nije potrebno pamtiti stanja koja se vise nece koristiti)
+Rekonstrukcije rjesenja
+Brzo racunanje prijelaza uz pomoc struktura
+Zadatke o kojima smo raspravljali mozes vidjeti u prvom mailu (tekstovi zadataka iskomentirani su na pocetku svakog sourcea). Savjetujem da procitas zadatke, razmislis o svakom 10ak minuta pa, ako zapnes, pogledas rjesenje ili pitas za hint.
+
+Sto se tice dijela vezanog uz vjerojatnosti, vecinu predavanja sam propustio...
+
+TL;DR: radili smo vjerojatnost i kako riješiti probleme s vjerojatnošću koristeći dinamiku (a ako ništa drugo, često za manje bodova, radi i brute-force)
+
+Full version:
+Prvo smo radili teoretski o vjerojatnosti (čini mi se da je većina toga, bar onaj dio bitan za zadatke, gradivo vjerojatnosti iz 4. raz gimnazije uz par pojmova koji su malo kompleksniji, kak je dosta vremena prošlo od srednje, nije bilo loše kao kratko ponavljanje: formula isključivanja-uključivanja, vjerojatnost jednog događaja ako znamo da se neki drugi dogodio ...). Onda smo rješavali zadatke:
+http://community.topcoder.com/stat?c=problem_statement&pm=3994&rd=6532
+http://codeforces.com/problemset/problem/476/B
+
+Mislim da je bio još jedan zadatak (il dva), al ne mogu ga se sjetit (mislim da nije bio puno drukčiji od spomenutih).
+
+[ostatak je SPOILER za ta dva zadatka]
+PipeCuts: da se riješit brute-forceom, 2 dvije for petlje za provjeriti sve moguće slučajeve, i zapamitit koliko ih je povoljno
+Dreamoon..: rješenje kad ga vidiš da je kratko i zadatak stvarno nije težak, al ak je nedjelja ujutro i pospan si onda doživiš prosvjetljenje :P , nije cijeli kod već samo ideja:
+/* CodeForces 476B */
+
+char poruka[11];
+
+/**
+ * x -> trenutna pozicija na koordinatnoj osi
+ * s -> trenutni index na polju (s-ti znak u poruci)
+ */
+double dinamika(int x, int s) {
+    /* fali uvjet završetka: ako smo došli na zadnji znaki u poruci moramo
+     * vratiti neku stvarnu vrijednost (tipa 0, 1 ili što već odlučimo) da bi
+     * se izračunala vjerojatnost
+     * mislim da treba i neki globalni counter u kojem je ukupni broj slučajeva
+     */
+    char trenutni_znak = poruka[s];
+    if(trenutni_znak == '+') return dinamika(x+1, s+1);
+    if(trenutni_znak == '-') return dinamika(x-1, s+1);
+    // inače:
+    return dinamika(x+1, s+1) / 2 + dinamika(x-1, s+1) / 2;
+    // jer su nam šanse fifty-fifty (* 1/2) da idemo lijevo, odnosno desno
+}
+
+evo, malo duži post, sorry, al kad se treba učit nešto dosadno uvijek se nađe nešto drugo za napravit :P
+
+Jos smo rjesavali zadatak 'Sort' za zadnjeg studentskog http://www.hsin.hr/studenti2014/zadaci/drugi_krug/zadaci.pdf
