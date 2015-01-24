@@ -14,12 +14,16 @@ char word[MAXLEN + 3];
 llint base[MAXLEN + 3];
 llint lh[MAXLEN + 3], rh[MAXLEN + 3];
 
+llint mod(llint x) {
+  return ((x%MOD) + MOD)%MOD;
+}
+
 llint lhash(int a, int b) {
-  return ((lh[b] - base[b - a + 1]*lh[a - 1])%MOD + MOD)%MOD;
+  return mod(lh[b] - mod(base[b - a + 1]*lh[a - 1]));
 }
 
 llint rhash(int a, int b) {
-  return ((rh[a] - base[b - a + 1]*rh[b + 1])%MOD + MOD)%MOD;
+  return mod(rh[a] - mod(base[b - a + 1]*rh[b + 1]));
 }
 
 int main() {
@@ -30,9 +34,9 @@ int main() {
   rh[length - 1] = word[length - 1];
 
   for (int i = 1; i < length; i++) {
-    lh[i] = (B*lh[i - 1] + word[i])%MOD;
-    rh[length - 1 - i] = (B*rh[length - i] + word[length - 1 - i])%MOD;
-    base[i] = B*base[i - 1];
+    lh[i] = mod(mod(B*lh[i - 1]) + word[i]);
+    rh[length - 1 - i] = mod(mod(B*rh[length - i]) + word[length - 1 - i]);
+    base[i] = mod(B*base[i - 1]);
   }
 
   int maxlen = 1;
