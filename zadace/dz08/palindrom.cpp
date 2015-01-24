@@ -38,14 +38,14 @@ int main() {
   int maxlen = 1;
   for (int k = 0; k < length; k++) {
     int lo = 0, hi = min(k, length - 1 - k), mid;
-    while (lo < hi) {
+    while (lo <= hi) {
       mid = (hi + lo + 1)/2;
       if (lhash(k - mid, k) == rhash(k, k + mid))
-        lo = mid;
+        lo = mid + 1;
       else
         hi = mid - 1;
     }
-    maxlen = max(maxlen, 1 + 2*lo);
+    maxlen = max(maxlen, 1 + 2*hi);
   }
 
   for (int k = 0; k < length - 1; k++) {
@@ -53,14 +53,14 @@ int main() {
       continue;
 
     int lo = 0, hi = min(k, length - 2 - k), mid;
-    while (lo < hi) {
+    while (lo <= hi) {
       mid = (hi + lo + 1)/2;
       if (lhash(k - mid, k) == rhash(k + 1, k + 1 + mid))
-        lo = mid;
+        lo = mid + 1;
       else
         hi = mid - 1;
     }
-    maxlen = max(maxlen, 2*lo + 2);
+    maxlen = max(maxlen, 2*hi + 2);
   }
 
   printf("%d\n", maxlen);
