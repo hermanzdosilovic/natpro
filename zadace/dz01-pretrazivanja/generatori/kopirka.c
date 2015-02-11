@@ -5,7 +5,7 @@
 int main(void) {
   srand(time(0));
   int M, K, MAXP;
-  scanf("%d %d", &M, &MAXP);
+  scanf("%d%d", &M, &MAXP);
   K = rand()%M + 1;
   printf("%d %d\n", M, K);
   for (int i = 0; i < M; i++) {

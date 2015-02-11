@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 /*
 Zadan je niz a od maksimalno 10^6 elemenata. Indeksi elementi tog niza
 nalaze se u intervalu [1, N] gdje je N broj elemenata tog niza.

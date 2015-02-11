@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 /*
 Binarno pretrazivanje koje pretrazuje polje od N elemenata.
 Trazi se element vrijednosti k. Ako takav element ne postoji vratiti -1.

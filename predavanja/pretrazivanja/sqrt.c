@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 /*
 Implementirati funkciju sqrt koristenjem binarnog pretrazivanja.
 */

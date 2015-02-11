@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 /*
 Treba ispisati maksimalni element u nekom podnizu. Postoje dva querya update i query.
 update postavlja vrijednost nekog elementa na unesenu vrijednost.

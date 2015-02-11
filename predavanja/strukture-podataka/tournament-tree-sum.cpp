@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 /*
 Trazenje sume na intervalu s updateom.
 */
