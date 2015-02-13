@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 Covijek ulazi u prostoriju n*n.
 
 0 0 5 0 0
