@@ -1,3 +1,7 @@
+// Herman Zvonimir Došilović
+/*
+Za učitani N, ispiši zadnju znamenku broja N! koja je > 0.
+*/
 #include <stdio.h>
 
 int main(void) {

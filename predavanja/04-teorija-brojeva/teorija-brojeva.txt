@@ -1,3 +1,4 @@
+// Herman Zvonimir Došilović
 * Djeljivost
 a | b  <=> postoji k iz Z td. b=ak
 a dijeli b
